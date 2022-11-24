@@ -1,0 +1,20 @@
+#include <memory.h>
+#include <stdlib.h>
+#include <math.h>
+#include <float.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <string.h>
+#include <complex.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <dirent.h>
+
+#include "../MFCCs/mfccs.h"
+#include "../Misc/mfcc_vars.h"
+#include "../Test/test.h"
+#include "../DTW/dtw.h"
+#include "../Feature/mfcc.h"
+#include "../Boundary/bounds.h"
+#include "../KNN/knn.h"

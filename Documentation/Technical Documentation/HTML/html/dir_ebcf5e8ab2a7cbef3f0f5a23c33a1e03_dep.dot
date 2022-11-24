@@ -1,0 +1,11 @@
+digraph "/home/bruh/Documents/GitHub/cleaned_and_commented/NTCD-TIMIT"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  compound=true
+  subgraph clusterdir_2a3752ec75963af6742b1ed14a1dd3a5 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", style="filled,dashed,", label="cleaned_and_commented", fontname="Helvetica", fontsize="10", URL="dir_2a3752ec75963af6742b1ed14a1dd3a5.html"]
+  dir_ebcf5e8ab2a7cbef3f0f5a23c33a1e03 [shape=box, label="NTCD-TIMIT", style="filled,bold,", fillcolor="#edf0f7", color="grey25", URL="dir_ebcf5e8ab2a7cbef3f0f5a23c33a1e03.html"];
+  }
+}

@@ -1,0 +1,15 @@
+digraph "/home/bruh/Documents/GitHub/cleaned_and_commented/Seperation"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  compound=true
+  subgraph clusterdir_2a3752ec75963af6742b1ed14a1dd3a5 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", style="filled,dashed,", label="cleaned_and_commented", fontname="Helvetica", fontsize="10", URL="dir_2a3752ec75963af6742b1ed14a1dd3a5.html"]
+  subgraph clusterdir_6a92ae01594ef34d234b6fad52ba91f7 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", style="filled,bold,", label="", fontname="Helvetica", fontsize="10", URL="dir_6a92ae01594ef34d234b6fad52ba91f7.html"]
+    dir_6a92ae01594ef34d234b6fad52ba91f7 [shape=plaintext, label="Seperation"];
+  dir_c50ecfdd152c6aaace6b55add75bc19c [shape=box, label="ctest.c", style="filled,", fillcolor="#a2b4d6", color="grey25", URL="dir_c50ecfdd152c6aaace6b55add75bc19c.html"];
+  }
+  }
+}

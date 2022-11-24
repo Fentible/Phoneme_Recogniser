@@ -1,0 +1,11 @@
+digraph "/home/bruh/Documents/GitHub/cleaned_and_commented/Dynamic_Time_Warping"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  compound=true
+  subgraph clusterdir_2a3752ec75963af6742b1ed14a1dd3a5 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", style="filled,dashed,", label="cleaned_and_commented", fontname="Helvetica", fontsize="10", URL="dir_2a3752ec75963af6742b1ed14a1dd3a5.html"]
+  dir_4e442b783895925e361fa9d0a2cdb4eb [shape=box, label="Dynamic_Time_Warping", style="filled,bold,", fillcolor="#edf0f7", color="grey25", URL="dir_4e442b783895925e361fa9d0a2cdb4eb.html"];
+  }
+}

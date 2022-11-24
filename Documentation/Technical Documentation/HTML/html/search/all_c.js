@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['mask_5fsig_0',['mask_sig',['../_dynamic___time___warping_2dtw_8c.html#ae0b1c14cf91476419173cb8b91305d10',1,'dtw.c']]],
+  ['matrix_5foutput_1',['matrix_output',['../_testing_2test_8c.html#afae0612e94a187dd01cc5864eabd01e6',1,'test.c']]],
+  ['max_5fmfcc_2',['max_mfcc',['../_feature___extraction_2mfcc_8c.html#ab3cf7a47c529d8b84590d5819d09130b',1,'mfcc.c']]],
+  ['max_5fsil_3',['max_sil',['../train_8c.html#a9404b1c6eeb5954d50e705b45981e68d',1,'train.c']]],
+  ['max_5fsil_5fdb_4',['max_sil_dB',['../train_8c.html#a63b388c106943f23101f485b6a94ed76',1,'train.c']]],
+  ['max_5fsil_5fflt_5',['max_sil_flt',['../train_8c.html#aa359ab3dac569efdf74e8537591a0b95',1,'train.c']]],
+  ['max_5fsil_5fmean_6',['max_sil_mean',['../train_8c.html#a4bf45582aa10128a56cd1ce8722a497d',1,'train.c']]],
+  ['max_5fsil_5fste_7',['max_sil_ste',['../train_8c.html#a86db886f4b6237233b9b81f84eebfb9f',1,'train.c']]],
+  ['max_5fsil_5fzc_8',['max_sil_zc',['../train_8c.html#aec686a22df7e365e8d75309c68d56cd3',1,'train.c']]],
+  ['mean_5fsize_5fmfccs_9',['mean_size_mfccs',['../_dynamic___time___warping_2dtw_8c.html#a981f220313707a0dcc09a81d4802a1a5',1,'dtw.c']]],
+  ['mel_10',['mel',['../mel_8c.html#a1e468f845d0da3882d8d58c9ae8196b3',1,'mel.c']]],
+  ['mel_2ec_11',['mel.c',['../mel_8c.html',1,'']]],
+  ['merge_5fsilences_12',['merge_silences',['../_testing_2test_8c.html#a5476ebbc779afa6566e7b269e38c4304',1,'test.c']]],
+  ['mfcc_13',['mfcc',['../_feature___extraction_2mfcc_8c.html#a494792c79f7f50e599086aa5acef1fa3',1,'mfcc.c']]],
+  ['mfcc_2ec_14',['mfcc.c',['../_feature___extraction_2mfcc_8c.html',1,'']]],
+  ['min_5fmax_5fvalues_15',['min_max_values',['../_dynamic___time___warping_2dtw_8c.html#a926f7823d7e4c9ca77958d52cd83c0fa',1,'dtw.c']]],
+  ['minimum_5fedit_5fdistance_16',['minimum_edit_distance',['../_testing_2test_8c.html#a3b06ade2dc54393e6e36403ff2dac2a7',1,'test.c']]],
+  ['myapp_17',['MyApp',['../classmain_1_1_my_app.html',1,'main']]],
+  ['myframe_18',['MyFrame',['../classmain_1_1_my_frame.html',1,'main']]],
+  ['mygrid_19',['MyGrid',['../classmain_1_1_my_grid.html',1,'main']]]
+];
