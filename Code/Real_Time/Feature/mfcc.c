@@ -146,8 +146,8 @@ float* f_realloc(float* input, int length)
 	if (new != NULL) {
 		return new;
 	} else {
-		// fprintf(stderr, "Memory error, trying to allocate %d length which is %d bytes.\n", (int)length, (int)(length*sizeof(float)));
-		free(input);
+		fprintf(stderr, "Memory error, trying to allocate %d length which is %d bytes.\n", (int)length, (int)(length*sizeof(float)));
+		// free(input);
 		exit(-1);
 	}
 	
@@ -191,8 +191,7 @@ short* s_realloc(short* input, int length)
 	if (new != NULL) {
 		return new;
 	} else {
-		// fprintf(stderr, "Memory error, trying to allocate %d length which is %d bytes.\n", (int)length, (int)(length*sizeof(short)));
-		free(input);
+		fprintf(stderr, "Memory error, trying to allocate %d length which is %d bytes.\n", (int)length, (int)(length*sizeof(short)));
 		exit(-1);
 	}
 }	
@@ -230,9 +229,9 @@ short* paa(short* sequence, int length)
 
 float* dct(float* array, int width)
 {
-	float* result = (float*)malloc(width * sizeof(float));
+	float* result = (float*)calloc(width, sizeof(float));
 	if(result == NULL) 
-		// printf("Failed to malloc 'result' in FFT\n");
+		printf("Failed to malloc 'result' in FFT\n");
 	
 	for(int i = 0; i < width; i++) {
 		float sum = 0;
@@ -402,7 +401,7 @@ float* mfcc_quick(float* sequence, int width, int incr, int banks, int paa)
 		}
 	}
 	/* Mel filter banks */
-	float** applied_mels = calloc(amount, sizeof(float*));
+	float** applied_mels = malloc(amount * sizeof(float*));
 	if(chunks == NULL || mags == NULL || applied_mels == NULL) {
 		return NULL;
 	}
@@ -418,7 +417,6 @@ float* mfcc_quick(float* sequence, int width, int incr, int banks, int paa)
 	}
 	for(int i = 0; i < amount; i++) {
 		for(int j = 0; j < banks; j++) {
-			/* TODO :: Conditional jump or move depends on uninitialised value(s) */
 			if(applied_mels[i][j] <= 0) {
 				applied_mels[i][j] = FLT_EPSILON;
 			}
@@ -431,7 +429,7 @@ float* mfcc_quick(float* sequence, int width, int incr, int banks, int paa)
 		free(temp);
 	}
 	int trunc = floor(banks * glbl_test_trunc);
-	float* result = (float*)malloc((amount * trunc) * sizeof(float));
+	float* result = (float*)calloc((amount * trunc), sizeof(float));
 	int last = amount;
 	int n = 0;
 	for(int i = 0; i < amount; i++) {

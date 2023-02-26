@@ -16,54 +16,27 @@ int knn_mfccs_size(float* test, int test_length, int k)
 		if(phones[i]->use_count == 0) {
 			continue;
 		}
-		for(int j = 0; j < phones[i]->use_count; j++) {
-			if(phones[i]->size[j] != 0 && mfcc_length == phones[i]->size[j]) {
-				n++;
-			}
-		}
+		n += phones[i]->use_count;
 	}
-	int NONE = 0;
 	if(n == 0) {
-		n = (num_ph);
-		NONE = 1;
+		printf("Zero prototypes with size %d, returning sil\n", mfcc_length);
+		return (num_ph - 1);
 	}
-	
 	to_test = n;
+	
 	struct Guess* gs = (struct Guess*)malloc(sizeof(struct Guess) * to_test);
 	int l = 0;
 	
 	for(int i = 0; i < num_ph; i++) {
-		if(phones[i]->use_count == 0) {
-			continue;
-		}
-		if(NONE == 1) {
-			int sml = INT_MAX, indx = 0;
-			for(int j = 0; j < phones[i]->use_count; j++) {
-				if(abs(mfcc_length - phones[i]->size[j]) < sml && phones[i]->size[j] != 0) {
-					sml = abs(mfcc_length - phones[i]->size[j]);
-					indx = j;
-				}
-			}
-			if(phones[i]->size[indx] == 0) {
-				printf("Iterating removed all sequences for :: %s :: Ending tests\n", phones[i]->index->name);
-				exit(-1);
-			}
-			gs[l].diff = dtw_frame_result(test, test_length, phones[i], indx);
+		for(int j = 0; j < phones[i]->use_count; j++) {
+			gs[l].diff = dtw_frame_result(test, test_length, phones[i], j);
 			gs[l].guess = i;
-			gs[l].ref_indx = indx;
+			gs[l].ref_indx = j;
 			gs[l].ref = phones[i];
 			l++;
-		} else {
-			for(int j = 0; j < phones[i]->use_count; j++) {
-				if(phones[i]->size[j] != 0 && mfcc_length == phones[i]->size[j]) {
-					gs[l].diff = dtw_frame_result(test, test_length, phones[i], j);
-					gs[l].guess = i;
-					gs[l].ref_indx = j;
-					gs[l].ref = phones[i];
-					l++;
-				}
-			}
+		       
 		}
+	       
 	}
 		
 	qsort(gs, to_test, sizeof(struct Guess), guesscomp);
@@ -88,6 +61,7 @@ int knn_mfccs_size(float* test, int test_length, int k)
 			result = i;
 		}
 	}
+	free(modes);
 	free(gs);
 	return result;
 }

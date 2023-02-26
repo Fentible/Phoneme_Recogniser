@@ -69,7 +69,7 @@ int test_phoneme_utterance(short* h, int signal_length)
 		for(int i = 1; i < num_ph; i++) {
 			phones[i]->score = DBL_MAX;
 		}
-		return - 1;
+		return -1;
 	}
 	int new_size = mfcc_size(signal_length);
 	if(new_size <= 0) {
@@ -78,7 +78,8 @@ int test_phoneme_utterance(short* h, int signal_length)
 		}
 		return -1;
 	}
-
+	free(h);
 	int knn = knn_mfccs_size(signal, signal_length, 7);
+	free(signal);
 	return knn;
 }

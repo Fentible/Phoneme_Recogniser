@@ -29,7 +29,6 @@ int main(void)
 		printf("line :: %s\n", line);
 		p = strtok(line," ");
 		if(p[0] == '.') {
-			fclose(out);
 			continue;
 		}
 		if(p[0] == '"') {

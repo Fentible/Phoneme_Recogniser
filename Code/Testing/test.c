@@ -700,7 +700,7 @@ void export_results(char* ph_code)
 	FILE* fp = fopen(file_name, "a");
 	// printf("test filename = %s\n", file_name);
 	if(fp == NULL) {
-		printf("Failed saving phoneme result\n");
+		printf("Failed saving phoneme result: %s\n", file_name);
 		exit(-1);
 	}
 	// printf("index = %d\n", s_indexes[0]);

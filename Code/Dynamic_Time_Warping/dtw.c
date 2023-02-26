@@ -1612,9 +1612,9 @@ void export_mfccs(void)
 {
 	
 	char* base = "../MFCCs/";
-	char sub_fold[512];
+	char sub_fold[1024];
 	struct dirent *next_file;
-	char filepath[512];
+	char filepath[1024];
 	for(int i = 1; i < num_ph; i++) {
 		sprintf(sub_fold, "%s%s/", base, phones[i]->index->name);
 		DIR* theFolder = opendir(sub_fold);
@@ -1627,7 +1627,8 @@ void export_mfccs(void)
 			if(strcmp(next_file->d_name, "../MFCCs/") == 0)
 				continue;
 			// build the path for each file in the folder
-			sprintf(filepath, "%s%s/", sub_fold, next_file->d_name);
+			sprintf(filepath, "%s", sub_fold);
+			sprintf(filepath, "%s/", next_file->d_name);
 			remove(filepath);
 		}
 		closedir(theFolder);
@@ -1760,7 +1761,7 @@ void export_for_pca(void)
 		mkdir(sub_fold, 0700);
 	}
 		
-	char filename[256];
+	char filename[1024];
 	int trunc = floor(glbl_banks * glbl_test_trunc);
 	
 	FILE* fp = NULL;
@@ -1790,9 +1791,9 @@ void export_clusters(void)
 {
 	
 	char* base = "../Clusters/";
-	char sub_fold[512];
+	char sub_fold[1024];
 	struct dirent *next_file;
-	char filepath[512];
+	char filepath[2048];
 	for(int i = 1; i < num_ph; i++) {
 		sprintf(sub_fold, "%s%s/", base, phones[i]->index->name);
 		DIR* theFolder = opendir(sub_fold);
@@ -1812,7 +1813,7 @@ void export_clusters(void)
 	}
 	
 	
-	char filename[256];
+	char filename[1024];
 	FILE* m_fp = fopen("../Clusters/config.txt", "w");
 	fprintf(m_fp, "banks %d\ntrunc %f\nwidth %d\noverlap %d\n", glbl_banks, glbl_test_trunc, glbl_window_width, glbl_interval_div);
 	fclose(m_fp);
@@ -1862,7 +1863,7 @@ void export_device(void)
 		mkdir(base, 0700);
 	}
 	closedir(base_fold);
-	char sub_fold[512];
+	char sub_fold[256];
 	struct dirent *next_file;
 	char filepath[512];
 	for(int i = 1; i < num_ph; i++) {
@@ -1886,7 +1887,7 @@ void export_device(void)
 	}
 	
 	
-	char filename[256];
+	char filename[1024];
 	FILE* m_fp = fopen("../device/config.conf", "w");
 	fprintf(m_fp, "banks %d\ntrunc %f\nwidth %d\noverlap %d\nframe_limit %d", glbl_banks, glbl_test_trunc, glbl_window_width, glbl_interval_div,
 		glbl_frame_limit);

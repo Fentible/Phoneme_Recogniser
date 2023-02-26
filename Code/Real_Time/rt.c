@@ -1,6 +1,7 @@
 #include "rt.h"
 
 pthread_mutex_t lock;
+pthread_cond_t cond;
 
 short in_array[64000] = {0};
 short pr_array[64000] = {0};
@@ -15,15 +16,13 @@ void boundary(void);
 
 int STOP = 0;
 
-int in_count = 0;
-int pr_count = 0;
-
 short* read_wav(FILE* fp);
 
 int main(void)
 {
 	dtw_init();
 	pthread_mutex_init(&lock, NULL);
+	pthread_cond_init(&cond, NULL);
 		
 	pthread_t tid;
 
@@ -40,6 +39,7 @@ void* record_thread(void* argp)
 {
 	
 	while(1) {
+		sleep(1);
 		record();
 	}
 
@@ -51,26 +51,26 @@ void* process_thread(void* argp)
 	
 	while(1) {
 		// pr_count++;
-		check_in();
+		// check_in();
+		sleep(1);
+		update_arrays(1, 0);
 	}
 
 	return NULL;
 }
 
-int check_in(void)
-{
-	if(in_size > 16) {
-		update_arrays(1, 0);
-		return 0;
-	}
-
-	return -1;
-}
+/* void check_in(void) */
+/* { */
+/* 	if(in_size > 16) { */
+/* 		// update_arrays(1, 0); */
+/* 	} */
+/* 	return; */
+/* } */
 
 void update_arrays(int in, int pr)
 {
 	pthread_mutex_lock(&lock); // lock the arrays
-	if(pr == 0) {
+	if((pr == 0) && (in_size > 16)) {
 		// move the in_buffer to the end of the process_buffer
 		for(int i = 0; i < in_size; i++) {
 			pr_array[i + pr_size] = in_array[i];
@@ -86,7 +86,7 @@ void update_arrays(int in, int pr)
 		//for(int i = 0; i < pr_size; i++) {
 		//	printf("pr_size[%d] = %d\n", i, pr_array[i]);
 		// }
-		if(pr_size > 64000) {
+		if(pr_size > 64000 || in_size > 64000) {
 			perror("Over 'pr' limit\n");
 			exit(-1);
 		}
@@ -94,12 +94,12 @@ void update_arrays(int in, int pr)
 	} else {
 		in_array[in_size] = in;
 		in_size++;
-		if(in_size > 64000) {
+		if(in_size > 64000 || pr_size > 64000) {
 			perror("Over 'in' limit\n");
 			exit(-1);
 		}
 	}
-
+	pthread_cond_signal(&cond);
 	pthread_mutex_unlock(&lock);
 
 	return;
@@ -155,7 +155,11 @@ short* read_wav(FILE* fp)
 	file_length = ftell(fp);
 	rewind(fp);
 	buffer = (char *)malloc(file_length * sizeof(char));
-	fread(buffer, file_length, 1, fp);
+	size_t r = fread(buffer, sizeof(char), file_length, fp);
+	if(r != file_length) {
+		perror("Fread fail");
+		printf("Tried to read %ld but actually read %ld\n", file_length, r);
+	}
 	fclose(fp);
 
 	int sample_bits =(int)((unsigned char)(buffer[35]) << 8 |

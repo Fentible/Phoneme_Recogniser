@@ -128,7 +128,6 @@ struct Phoneme* get_mfcc(struct Phoneme* phone, int test_length)
 			fclose(fp);
 		}
 	}
-
 	return phone;
 }
 
