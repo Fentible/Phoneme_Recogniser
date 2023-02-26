@@ -1,3 +1,6 @@
-.txt
-.sh
-.exe
+*.txt
+*.sh
+*.exe
+*~
+*#
+*.phn
