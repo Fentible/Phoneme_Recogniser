@@ -604,6 +604,8 @@ void test_phoneme(short* h, int signal_length, char* p)
 	free(complete_signal[0]);
 	free(complete_signal[1]);
 	free(complete_signal[2]);
+	free(complete_signal[3]);
+	free(complete_signal[4]);
 	free(complete_signal);
 		
 	return;

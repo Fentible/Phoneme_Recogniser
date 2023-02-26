@@ -1486,6 +1486,7 @@ void clean(void)
 				free(phones[i]->feats[j]->entropy);
 				free(phones[i]->feats[j]);
 			}
+			free(phones[i]->feats[j]);
 			
 			// free(phones[i]->norm_mfcc[j]);
 			// free(phones[i]->aao_i);
@@ -1938,7 +1939,8 @@ void export_device(void)
 		sprintf(filename, "%s/%s/%s.conf", base, phones[i]->index->name, phones[i]->index->name);
 		fp = freopen(filename, "ab", fp);
 		fprintf(fp, " \n");
-		fclose(fp);	
+		fclose(fp);
+		free(amounts);
 	}
 
 	return;
